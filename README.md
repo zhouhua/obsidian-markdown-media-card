@@ -1,96 +1,124 @@
-# Obsidian Sample Plugin
+# Obsidian Markdown Media Card Plugin
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+![GitHub Release](https://img.shields.io/github/v/release/zhouhua/obsidian-markdown-media-card?include_prereleases&style=flat) ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/zhouhua/obsidian-markdown-media-card/total?style=flat)
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+## About
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+This is a plugin for Obsidian that allows you to insert media information cards in Markdown, such as Douban books, music, movies, etc.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+This project was inspired by [hexo-douban-card](https://github.com/TankNee/hexo-douban-card) and references the design and implementation of the card style. However, it does not have the ability to fetch Douban information. Instead, it allows users to freely configure the content displayed on the card, which can be completely unrelated to Douban.
 
-## First time developing plugins?
+This Obsidian plugin is a wrapper for the [Remark Media Card](https://github.com/zhouhua/remark-media-card). Please refer to [Remark Media Card](https://github.com/zhouhua/remark-media-card) for more information.
 
-Quick starting guide for new plugin devs:
+## Installation
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+Search `Markdown Media Card` in community plugins.
 
-## Releasing new releases
+## Examples
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+<div align="cneter"><img src="./screenshots/book.png" width="677" /></div>
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+````
+```media-card
+type: book
+url: https://book.douban.com/subject/35984787/
+title: Blindness Chronicles
+cover: https://img3.doubanio.com/view/subject/s/public/s34269503.jpg
+publishDate: 2022-08-27
+author: 若泽·萨拉马戈
+rating: 9.1
+width: 600
+introduction: |-
+  街上出现了第一个突然失明的人，紧接着是第二个、第三个……
+  一种会传染的失明症在城市蔓延，无人知晓疫情为何爆发、何时结束。
+  失明症造成了前所未有的恐慌与灾难，一批又一批感染者被集中隔离。
+  食物短缺，组织崩溃，文明与尊严变得不堪一击。
+  人们逐渐剥离道德的外衣，陷入比失明更绝望的苦难境地。
+  在这些人中，只有一个女人还能看见。
+  她的眼睛，是这个疯狂的世界里唯一尚存的理智。
 ```
+````
 
-If you have multiple URLs, you can also do:
+---
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
+<div align="cneter"><img src="./screenshots/music.png" width="677" /></div>
+
+````
+```media-card
+type: music
+url: https://music.163.com/#/song?id=19292984
+title: Love Story
+cover: https://p1.music.126.net/GZERNplXUdzTPkKqo2F4tA==/109951169217536854.jpg
+artist: Taylor Swift
+width: 600
 ```
+````
 
-## API Documentation
+---
 
-See https://github.com/obsidianmd/obsidian-api
+<div align="cneter"><img src="./screenshots/movie.png" width="677" /></div>
+
+````
+```media-card
+type: movie
+url: https://movie.douban.com/subject/35267208/
+title: 流浪地球2
+cover: https://img9.doubanio.com/view/photo/s/public/p2885842436.jpg
+director: 郭帆
+actors: 吴京 / 刘德华 / 李雪健 / 沙溢 / 宁理
+publishDate: 2023-01-22
+rating: 8.3
+introduction: |-
+  在并不遥远的未来，太阳急速衰老与膨胀，再过几百年整个太阳系将被它吞噬毁灭。为了应对这场史无前例的危机，地球各国放下芥蒂，成立联合政府，试图寻找人类存续的出路。通过摸索与考量，最终推着地球逃出太阳系的“移山计划”获得压倒性胜利。人们着手建造上万台巨大的行星发动机，带着地球踏上漫漫征程。满腔赤诚的刘培强（吴京 饰）和韩朵朵（王智 饰）历经层层考验成为航天员大队的一员，并由此相知相恋。但是漫漫征途的前方，仿佛有一股神秘的力量不断破坏者人类的自救计划。看似渺小的刘培强、量子科学家图恒宇（刘德华 饰）、联合政府中国代表周喆直（李雪健 饰）以及无数平凡的地球人，构成了这项伟大计划的重要一环……
+width: 600
+```
+````
+
+## Usage
+
+### Markdown Syntax
+
+For example, in this sample:
+
+````
+```media-card
+type: music
+url: https://music.163.com/#/song?id=19292984
+title: Love Story
+cover: https://p1.music.126.net/GZERNplXUdzTPkKqo2F4tA==/109951169217536854.jpg
+artist: Taylor Swift
+width: 600
+```
+````
+
+We expand the markdown code block syntax, defining `media-card` as the identifier for the media information card, and then inputting the card information in [yaml](https://yaml.org/) format within the code block. For details on the parameters that can be configured in YAML, please refer to [Parameters](#Parameters)。
+
+## Parameters
+
+| Parameter    | Parameter | Parameter | Description                                                                                                                        |
+| ------------ | :-------: | :-------: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| type         |    Yes    |  string   | Type, currently supports `movie`, `music`, `book`                                                                                  |
+| url          |    No     |  string   | Link the card redirects to, e.g., Douban introduction page or music playback page. If not set, clicking the card will not redirect |
+| title        |    Yes    |  string   | Media name (book title, music title, movie title, etc.)                                                                            |
+| cover        |    Yes    |  string   | Cover image                                                                                                                        |
+| introduction |    No     |  string   | Introduction, can be multi-line text, but only the first 3 lines will be displayed on the card                                     |
+| width        |    No     |  number   | Card width in pixels, defaults to full width if not set                                                                            |
+
+Additionally, if users want to add some custom information, they can directly add it in YAML format as `key: value` pairs (`value` supports HTML tags). All content other than the parameters mentioned in the table above will be rendered, for example:
+
+````
+```media-card
+type: music
+title: Love Story
+cover: https://p1.music.126.net/GZERNplXUdzTPkKqo2F4tA==/109951169217536854.jpg
+歌手: Taylor Swift
+专辑: <a href="https://music.163.com/#/album?id=1770438" target="_blank">《Fearless》</a>
+width: 600
+```
+````
+
+The rendered result is shown below:
+
+<div align="cneter"><img src="./screenshots/custom.png" width="677" /></div>
+
+`Singer` and `Album` are two custom fields, and the value of `Album` is a link that redirects to the album page when clicked.
