@@ -95,14 +95,14 @@ We expand the markdown code block syntax, defining `media-card` as the identifie
 
 ## Parameters
 
-| Parameter    | Parameter | Parameter | Description                                                                                                                        |
-| ------------ | :-------: | :-------: | ---------------------------------------------------------------------------------------------------------------------------------- |
-| type         |    Yes    |  string   | Type, currently supports `movie`, `music`, `book`                                                                                  |
-| url          |    No     |  string   | Link the card redirects to, e.g., Douban introduction page or music playback page. If not set, clicking the card will not redirect |
-| title        |    Yes    |  string   | Media name (book title, music title, movie title, etc.)                                                                            |
-| cover        |    Yes    |  string   | Cover image                                                                                                                        |
-| introduction |    No     |  string   | Introduction, can be multi-line text, but only the first 3 lines will be displayed on the card                                     |
-| width        |    No     |  number   | Card width in pixels, defaults to full width if not set                                                                            |
+| Parameter    | Required |  Type  | Description                                                                                                                        |
+| ------------ | :------: | :----: | ---------------------------------------------------------------------------------------------------------------------------------- |
+| type         |   Yes    | string | Type, currently supports `movie`, `music`, `book`                                                                                  |
+| url          |    No    | string | Link the card redirects to, e.g., Douban introduction page or music playback page. If not set, clicking the card will not redirect |
+| title        |   Yes    | string | Media name (book title, music title, movie title, etc.)                                                                            |
+| cover        |   Yes    | string | Cover image                                                                                                                        |
+| introduction |    No    | string | Introduction, can be multi-line text, but only the first 3 lines will be displayed on the card                                     |
+| width        |    No    | number | Card width in pixels, defaults to full width if not set                                                                            |
 
 Additionally, if users want to add some custom information, they can directly add it in YAML format as `key: value` pairs (`value` supports HTML tags). All content other than the parameters mentioned in the table above will be rendered, for example:
 
