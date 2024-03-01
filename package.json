@@ -1,15 +1,19 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "markdown-media-card",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "This is a plugin for Obsidian that allows you to insert media information cards in Markdown, such as books, music, movies, etc.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": [
+		"obsidian",
+		"plugin",
+		"markdown"
+	],
+	"author": "Zhou Hua",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^16.11.6",
