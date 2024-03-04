@@ -3,6 +3,7 @@ import {
 	parseYaml,
 	MarkdownRenderer,
 	MarkdownRenderChild,
+	sanitizeHTMLToDom,
 	Notice,
 } from "obsidian";
 import { template } from "@zhouhua-dev/remark-media-card";
@@ -10,9 +11,10 @@ import { template } from "@zhouhua-dev/remark-media-card";
 export default class MediaCardPlugin extends Plugin {
 	async onload() {
 		this.registerMarkdownCodeBlockProcessor("media-card", (source, el, ctx) => {
-			console.log("render");
 			try {
-				el.innerHTML = template(parseYaml(source));
+				const html = template(parseYaml(source));
+				const fragment = sanitizeHTMLToDom(html);
+				el.appendChild(fragment);
 			} catch (e) {
 				new Notice("Invalid YAML format.");
 				MarkdownRenderer.render(
