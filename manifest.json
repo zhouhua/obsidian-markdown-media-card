@@ -3,7 +3,7 @@
 	"name": "Markdown Media Card",
 	"version": "1.1.1",
 	"minAppVersion": "0.15.0",
-	"description": "You can insert media information cards in Markdown, such as books, music, movies, etc.",
+	"description": "Insert media information cards in Markdown, such as books, music, movies, etc.",
 	"author": "Zhou Hua",
 	"authorUrl": "https://zhouhua.site",
 	"isDesktopOnly": false
