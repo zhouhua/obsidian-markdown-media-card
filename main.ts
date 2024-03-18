@@ -6,13 +6,28 @@ import {
 	sanitizeHTMLToDom,
 } from "obsidian";
 import { template } from "@zhouhua-dev/remark-media-card";
+import { loadAllLocales } from "./i18n/i18n-util.sync";
+import { i18n } from "./i18n/i18n-util";
+import { Locales } from "./i18n/i18n-types";
+
+loadAllLocales();
+
+let locale: Locales = "en";
+try {
+	// @ts-ignore
+	locale = /^zh/.test(global?.i18next?.language || "") ? "zh" : "en";
+} catch (e) {
+	/* empty */
+}
+
+const L = i18n()[locale];
 
 function appendErrorMsg(el: HTMLElement) {
 	const container = el.querySelector("pre.language-yaml");
 	if (container) {
-		const errorMsg = container.createEl("div", {
+		container.createEl("div", {
 			cls: "error-msg",
-			text: "Invalid YAML format.",
+			text: L.invalid(),
 		});
 	}
 }
