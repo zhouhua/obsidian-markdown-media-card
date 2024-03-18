@@ -100,7 +100,7 @@ We expand the markdown code block syntax, defining `media-card` as the identifie
 | type         |   Yes    | string | Type, currently supports `movie`, `music`, `book`                                                                                  |
 | url          |    No    | string | Link the card redirects to, e.g., Douban introduction page or music playback page. If not set, clicking the card will not redirect |
 | title        |   Yes    | string | Media name (book title, music title, movie title, etc.)                                                                            |
-| cover        |   Yes    | string | Cover image                                                                                                                        |
+| cover        |   Yes    | string | Cover image, web url(https://...) and obsidian vault path(../folder/xx.jpg or folder/xx.jpg) are supported                         |
 | introduction |    No    | string | Introduction, can be multi-line text, but only the first 3 lines will be displayed on the card                                     |
 | width        |    No    | number | Card width in pixels, defaults to full width if not set                                                                            |
 

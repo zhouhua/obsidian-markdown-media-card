@@ -32,25 +32,48 @@ function appendErrorMsg(el: HTMLElement) {
 	}
 }
 
+async function calcImageUrl(path: string, sourcePath: string) {
+	try {
+		const div = createDiv();
+		await MarkdownRenderer.render(
+			this.app,
+			`![](${path})`,
+			div,
+			sourcePath,
+			new MarkdownRenderChild(div)
+		);
+		return div.find("img").getAttribute("src");
+	} catch (e) {
+		return path;
+	}
+}
+
 export default class MediaCardPlugin extends Plugin {
 	async onload() {
-		this.registerMarkdownCodeBlockProcessor("media-card", (source, el, ctx) => {
-			el.addClass("markdown-media-card-render");
-			try {
-				const html = template(parseYaml(source));
-				const fragment = sanitizeHTMLToDom(html);
-				el.appendChild(fragment);
-			} catch (e) {
-				MarkdownRenderer.render(
-					this.app,
-					["```yaml", source, "```"].join("\n"),
-					el,
-					ctx.sourcePath,
-					new MarkdownRenderChild(el)
-				);
-				appendErrorMsg(el);
+		this.registerMarkdownCodeBlockProcessor(
+			"media-card",
+			async (source, el, ctx) => {
+				el.addClass("markdown-media-card-render");
+				try {
+					const data = parseYaml(source);
+					if (data.cover) {
+						data.cover = await calcImageUrl(data.cover, ctx.sourcePath);
+					}
+					const html = template(data);
+					const fragment = sanitizeHTMLToDom(html);
+					el.appendChild(fragment);
+				} catch (e) {
+					MarkdownRenderer.render(
+						this.app,
+						["```yaml", source, "```"].join("\n"),
+						el,
+						ctx.sourcePath,
+						new MarkdownRenderChild(el)
+					);
+					appendErrorMsg(el);
+				}
 			}
-		});
+		);
 	}
 
 	onunload() {}
