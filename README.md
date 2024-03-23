@@ -122,3 +122,7 @@ The rendered result is shown below:
 <div align="cneter"><img src="./screenshots/custom.png" width="677" /></div>
 
 `Singer` and `Album` are two custom fields, and the value of `Album` is a link that redirects to the album page when clicked.
+
+## My Other Obsidian Plugins
+
+- [export image](https://github.com/zhouhua/obsidian-export-image])
