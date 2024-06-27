@@ -91,7 +91,7 @@ width: 600
 ```
 ````
 
-We expand the markdown code block syntax, defining `media-card` as the identifier for the media information card, and then inputting the card information in [yaml](https://yaml.org/) format within the code block. For details on the parameters that can be configured in YAML, please refer to [Parameters](#Parameters)。
+We expand the markdown code block syntax, defining `media-card` as the identifier for the media information card, and then inputting the card information in [yaml](https://yaml.org/) format within the code block. For details on the parameters that can be configured in YAML, please refer to [Parameters](#parameters)。
 
 ## Parameters
 
@@ -125,4 +125,8 @@ The rendered result is shown below:
 
 ## My Other Obsidian Plugins
 
-- [export image](https://github.com/zhouhua/obsidian-export-image])
+- [Export Image](https://github.com/zhouhua/obsidian-export-image)
+- [vConsole](https://github.com/zhouhua/obsidian-vconsole)
+- [POWER MODE](https://github.com/zhouhua/obsidian-power-mode)
+- [Another Sticky Headings](https://github.com/zhouhua/obsidian-sticky-headings)
+- [PopKit](https://github.com/zhouhua/obsidian-popkit)
